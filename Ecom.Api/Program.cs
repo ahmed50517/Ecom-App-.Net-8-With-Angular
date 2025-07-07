@@ -1,3 +1,4 @@
+using Ecom.Api.Middleware;
 using Ecom.Infrastructure;
 using Microsoft.Extensions.FileProviders;
 namespace Ecom.Api
@@ -17,6 +18,7 @@ namespace Ecom.Api
             builder.Services.infrastructureConfiguration(builder.Configuration);
             //auto mapper dep. injection
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddMemoryCache();
 
             
 
@@ -28,6 +30,7 @@ namespace Ecom.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 

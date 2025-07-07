@@ -42,3 +42,4 @@ namespace Ecom.Core.DTO
         public int CategoryId { get; set; }
         public IFormFileCollection Photo { get; set; }
     }
+}
